@@ -1,19 +1,53 @@
-group 'com.alexandreesl.handson'
-version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'maven'
+apply plugin: 'idea'
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '2.13'
-  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+jar {
+    baseName = 'apache-camel-handson'
+    version = '1.0'
 }
 
-apply plugin: 'java'
+project.ext {
+    springBootVersion = '1.5.4.RELEASE'
+    camelVersion = '2.18.3'
 
-sourceCompatibility = 1.5
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
+bootRun {
+    systemProperties = System.properties
+}
+
+
 dependencies {
+
+    compile group: 'org.apache.camel', name: 'camel-spring-boot-starter', version: camelVersion
+    compile group: 'org.apache.camel', name: 'camel-commands-spring-boot', version: camelVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+group 'com.alexandreesl.handson'
+version '1.0'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
+    }
 }
