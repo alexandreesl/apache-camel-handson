@@ -1,0 +1,4 @@
+10.12.64.3 /api/v1/test1 POST 123
+10.12.67.3 /api/v1/test2 PATCH 125
+10.15.64.3 /api/v1/test3 GET 166
+10.120.64.23 /api/v1/test1 POST 100
