@@ -34,8 +34,10 @@ dependencies {
     compile group: 'org.apache.camel', name: 'camel-spring-boot-starter', version: camelVersion
     compile group: 'org.apache.camel', name: 'camel-commands-spring-boot', version: camelVersion
     compile group: 'org.apache.camel',name: 'camel-aws', version: camelVersion
+    compile group: 'org.apache.camel',name: 'camel-mail', version: camelVersion
     compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion
     testCompile group: 'junit', name: 'junit', version: '4.11'
+
 }
 group 'com.alexandreesl.handson'
 version '1.0'
