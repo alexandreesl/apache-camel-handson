@@ -1,5 +1,6 @@
 package com.alexandreesl.handson.configuration;
 
+import com.alexandreesl.handson.converters.StringToAccessLogDTOConverter;
 import org.apache.camel.CamelContext;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,8 @@ public class CamelConfiguration {
 
             @Override
             public void beforeApplicationStart(CamelContext camelContext) {
-                camelContext.getComponentNames();
+
+                camelContext.getTypeConverterRegistry().addTypeConverters(new StringToAccessLogDTOConverter());
 
             }
 
