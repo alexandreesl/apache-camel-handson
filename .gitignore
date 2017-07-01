@@ -11,6 +11,7 @@
 .gradle
 
 build/
+arn:aws:s3:::apache-camel-handson
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
