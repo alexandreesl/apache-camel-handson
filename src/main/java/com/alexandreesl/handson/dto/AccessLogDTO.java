@@ -44,4 +44,22 @@ public class AccessLogDTO {
     public void setDuration(long duration) {
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("[");
+        buffer.append(ip);
+        buffer.append(",");
+        buffer.append(url);
+        buffer.append(",");
+        buffer.append(httpMethod);
+        buffer.append(",");
+        buffer.append(duration);
+        buffer.append("]");
+
+        return buffer.toString();
+
+    }
 }

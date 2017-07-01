@@ -1,6 +1,7 @@
 package com.alexandreesl.handson.routes;
 
 import com.alexandreesl.handson.dto.AccessLogDTO;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,8 +21,9 @@ public class MyFirstCamelRoute extends SpringRouteBuilder {
                 .to("aws-s3:arn:aws:s3:::apache-camel-handson?amazonS3Client=#s3Client")
                 .convertBodyTo(String.class)
                 .split().tokenize("\n")
-                .convertBodyTo(AccessLogDTO.class)
-                .to("log:mylog");
+                    .convertBodyTo(AccessLogDTO.class)
+                    .log(LoggingLevel.INFO, "${body}")
+                    .to("aws-sqs://MyInputQueue?amazonSQSClient=#sqsClient");
 
     }
 }
